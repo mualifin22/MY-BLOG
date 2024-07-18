@@ -1,11 +1,13 @@
 @extends('layouts.main')
 
-@section()
+@section('container')
 
 <article>
     <h2>{{ $post['title'] }}</h2>
-    <h5>By: {{ $post['author'] }}</h5>
-    <p>{{ $post['content'] }}</p>
-</article>
+    <h5>By {{ $post['author'] }}</h5>
+    <p>{{ $post['content'] }}</p> 
+    </article>
+
+<a href="/blog">Back To Blog</a>
 
 @endsection
