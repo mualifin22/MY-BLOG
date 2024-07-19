@@ -8,6 +8,6 @@
     <p>{{ $post['content'] }}</p> 
     </article>
 
-<a href="/blog">Back To Blog</a>
+<a href="/posts">Back To Blog</a>
 
 @endsection
