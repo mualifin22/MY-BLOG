@@ -1,12 +1,11 @@
 @extends('layouts.main')
 
 @section('container')
+<h1 class="mb=5">{{ $post->title }}</h1>
 
-<article>
-    <h2>{{ $post->title }}</h2>
-    {{-- <h5>By {{ $post->author }}</h5> --}}
-    {!! $post->content !!}
-    </article>
+<p>By. Inuma in <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a></p>
+
+{!! $post->content !!}
 
 <a href="/posts">Back To Blog</a>
 
