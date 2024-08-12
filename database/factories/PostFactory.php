@@ -17,12 +17,15 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(mt_rand(2,8)),
+            'title' => fake()->sentence(mt_rand(2, 8)),
             'slug' => fake()->slug(),
-            'excerpt' => fake()->paragraph(mt_rand(1,2)),
-            'content' => fake()->paragraph(mt_rand(5,10)),
+            'excerpt' => fake()->paragraph(mt_rand(1, 2)),
+            // 'content' => '<p>' . implode('</p><p>', fake()->paragraphs(mt_rand(5,10))) . '</p>',
+            'content' => collect(fake()->paragraphs(mt_rand(5, 10)))
+                ->map(fn($p) => "<p>$p</p>")
+                ->implode(''),
             'user_id' => mt_rand(1, 10),
-            'category_id' => mt_rand(1,5),
+            'category_id' => mt_rand(1, 5),
         ];
     }
 }
