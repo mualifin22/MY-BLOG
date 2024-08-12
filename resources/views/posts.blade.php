@@ -23,7 +23,7 @@
         <p class="text-center fs-4">No post found.</p>
     @endif
 
-    @foreach ($posts as $post)
+    @foreach ($posts->skip(1) as $post)
         <article class="mb-5 border-bottom pb-4">
             <h2>
                 <a href="/posts/{{ $post->slug }}" class="text-decoration-none"> {{ $post->title }}</a>
