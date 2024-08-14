@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'personal',
         ]);
 
-        Post::factory(20)->create();
+        Post::factory(50)->create();
 
         // Post::create([
         //     'title' => 'Judul pertama',
