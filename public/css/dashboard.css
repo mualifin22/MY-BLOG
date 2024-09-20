@@ -32,20 +32,6 @@
   font-size: .75rem;
 }
 
-html, body {
-  height: 100%;
-}
-
-.container-fluid,
-.row {
-  height: 100%;
-}
-
-.sidebar {
-  height: 100%;
-}
-
-
 /*
  * Navbar
  */
@@ -60,3 +46,4 @@ html, body {
 .navbar .form-control {
   padding: .75rem 1rem;
 }
+
