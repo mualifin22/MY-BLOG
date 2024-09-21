@@ -9,17 +9,17 @@
                     <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-1 {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page"
+                                <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page"
                                     href="/dashboard"><i class="bi bi-layout-text-sidebar"></i>
                                     Dashboard
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-1 {{ Request::is('dashboard/posts') ? 'active' : '' }}" href="/dashboard/posts"><i class="bi bi-file-earmark"></i>
+                                <a class="nav-link {{ Request::is('dashboard/posts*') ? 'active' : '' }}" href="/dashboard/posts"><i class="bi bi-file-earmark"></i>
                                     My Posts
                                 </a>
                             </li>
-                            <li>
+                            <li class="nav-item">
                                 <form action="/logout" method="post">
                                     @csrf
                                     <button type="submit" class="nav-link px-3"><i class="bi bi-box-arrow-right"></i>
