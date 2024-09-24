@@ -9,7 +9,12 @@
                     <a href="/dashboard/posts" class="btn btn-success"><i class="bi bi-arrow-left"></i> Back to all my
                         posts</a>
                     <a href="" class="btn btn-warning"><i class="bi bi-pencil-fill"></i> Edit</a>
-                    <a href="" class="btn btn-danger"><i class="bi bi-x-circle"></i> Delete</a>
+                    <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+                        @method('delete')
+                        @csrf
+                        <button class="btn btn-danger" onclick="return confirm('Are you sure?')"><i
+                                class="bi bi-x-circle"></i> Delete</button>
+                    </form>
                 </div>
                 <img src="https://picsum.photos/400/" alt="{{ $post->category->name }}" class="image-fluid">
 
