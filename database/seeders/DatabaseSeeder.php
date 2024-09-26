@@ -19,19 +19,20 @@ class DatabaseSeeder extends Seeder
                 //     'name' => 'Test User',
                 //     'email' => 'test@example.com',
                 // ]);
-        
-                // User::create([
-                //     'name' => 'Inuma',
-                //     'email' => 'admin@example.com',
-                //     'password' => 'bcrypt(12345)',
-                // ]);
-        
+
+                User::create([
+                    'name' => 'Inuma',
+                    'username' => 'inuma',
+                    'email' => 'inuma@gmail.com',
+                    'password' => bcrypt('password')
+                ]);
+
                 // User::create([
                 //     'name' => 'Mualifin',
                 //     'email' => 'mualifin@example.com',
                 //     'password' => 'bcrypt(12345)',
                 // ]);
-                
+
         User::factory(10)->create();
 
         Category::create([

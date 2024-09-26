@@ -13,7 +13,8 @@
                     <input type="hidden" name="author" value="{{ request('author') }}">
                 @endif
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search.." name="search" value="{{ request('search') }}">
+                    <input type="text" class="form-control" placeholder="Search.." name="search"
+                        value="{{ request('search') }}">
                     <button class="btn btn-outline-secondary" type="submit">Search</button>
                 </div>
             </form>
@@ -24,9 +25,18 @@
         <!-- Featured Post -->
         <div class="card mb-3" style="border: 1px solid #ddd; border-radius: 0.25rem; overflow: hidden;">
             <div class="card-img-top-container" style="height: 300px; overflow: hidden;">
-                <img src="https://picsum.photos/1000" class="card-img-top"
-                    style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
-                    alt="{{ $posts[0]->category->name }}">
+                @if ($posts[0]->image)
+                    <div style="max-height: 350px; overflow:hidden">
+                        <img src="{{ asset('storage/' . $posts[0]->image) }}" alt="{{ $posts[0]->category->name }}"
+                            class="image-fluid">
+                    </div>
+                @else
+                    <img src="https://picsum.photos/400/" alt="{{ $posts[0]->category->name }}"
+                        class="image-fluid mt-3"><img src="https://picsum.photos/1000" class="card-img-top"
+                        style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+                        alt="{{ $posts[0]->category->name }}">
+                @endif
+
             </div>
             <div class="card-body text-center" style="padding: 1.25rem;">
                 <h3 class="card-title" style="margin-bottom: 0.75rem;">{{ $posts[0]->title }}</h3>
@@ -58,16 +68,24 @@
                     <div class="col-md-4 mb-3">
                         <div class="card">
                             <div class="position-absolute px-3 py-2" style="background-color: rgba(0, 0, 0, 0.7);">
-                                <a href="/posts?category={{ $post->category->slug }}" class="text-white text-decoration-none">
+                                <a href="/posts?category={{ $post->category->slug }}"
+                                    class="text-white text-decoration-none">
                                     {{ $post->category->name }}
                                 </a>
                             </div>
-                            <img src="https://picsum.photos/1000" class="card-img-top" alt="{{ $post->category->name }}">
+                            @if ($post->image)
+                                <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
+                                    class="card-img-top">
+                            @else
+                                <img src="https://picsum.photos/1000" class="card-img-top"
+                                    alt="{{ $post->category->name }}">
+                            @endif
                             <div class="card-body">
                                 <h5 class="card-title">{{ $post->title }}</h5>
                                 <p>
                                     <small class="text-muted">
-                                        By. <a href="/posts?author={{ $post->author->username }}" class="text-decoration-none">
+                                        By. <a href="/posts?author={{ $post->author->username }}"
+                                            class="text-decoration-none">
                                             {{ $post->author->name }}
                                         </a>
                                         {{ $post->created_at->diffForHumans() }}

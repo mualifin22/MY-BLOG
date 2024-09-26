@@ -11,7 +11,14 @@
                         href="/posts?category={{ $post->category->slug }}"
                         class="text-decoration-none">{{ $post->category->name }}</a></p>
 
-                <img src="https://picsum.photos/400/" alt="{{ $post->category->name }}" class="image-fluid">
+                @if ($post->image)
+                        <div style="max-height: 350px; overflow:hidden">
+                            <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
+                                class="image-fluid">
+                        </div>
+                    @else
+                        <img src="https://picsum.photos/400/" alt="{{ $post->category->name }}" class="image-fluid">
+                    @endif
 
                 <article class="my-3 from-sky-5">
                     {!! $post->content !!}
